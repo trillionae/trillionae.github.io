@@ -36,6 +36,22 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+
+    <script>
+		var isNS = (navigator.appName == "PN") ? 1 : 0;
+		if(navigator.appName == "PN") document.captureEvents(Event.MOUSEDOWN||Event.MOUSEUP);
+		function mischandler(){
+		return false;
+		}
+		function mousehandler(e){
+		var myevent = (isNS) ? e : event;
+		var eventbutton = (isNS) ? myevent.which : myevent.button;
+		if((eventbutton==2)||(eventbutton==3)) return false;
+		}
+		document.oncontextmenu = mischandler;
+		document.onmousedown = mousehandler;
+		document.onmouseup = mousehandler;
+		</script>
 </head>
 
 <body>
@@ -176,7 +192,7 @@
                                 </div>
                                 <div class="col col-sm-6">
                                     <label for="phone">Phone No.</label>
-                                    <input type="text" class="form-control" id="phone" name="phone">
+                                    <input type="number" class="form-control" id="phone" name="phone">
                                 </div>
                                 <div class="col col-xs-12">
                                     <label for="message">Message</label>
